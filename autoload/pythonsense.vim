@@ -426,11 +426,11 @@ function! pythonsense#python_docstring_text_object (inner)
     " descend lines obj_end_line end of buffer or def/class line
     while s < line('$') && getline(s) !~# '^\s*\(def\|class\)'
         " if line begins with optional whitespace followed by '''
-        if getline(s) =~ "^\\s*'''" || getline(s) =~ '^\s*"""'
-            if getline(s) =~ "^\\s*'''"
-                let close_pattern = "'''\\s*$"
+        if getline(s) =~ "^\\s*#*\\s*'''" || getline(s) =~ '^\s*#*\s*"""'
+            if getline(s) =~ "^\\s*#*\\s*'''"
+                let close_pattern = "#*\\s*'''\\s*$"
             else
-                let close_pattern = '"""\s*$'
+                let close_pattern = '#*\s*"""\s*$'
             endif
             " set search end to just after found start line
             let e = s + 1
