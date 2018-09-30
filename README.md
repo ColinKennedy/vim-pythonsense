@@ -4,6 +4,12 @@
 
 `Pythonsense` is a Vim plugin that provides [text objects](http://vimdoc.sourceforge.net/htmldoc/motion.html#object-select) and [motions](http://vimdoc.sourceforge.net/htmldoc/motion.html#object-motions) for Python classes, methods, functions, and doc strings.
 
+### Differences from jeetsukumaran/vim-pythonsense
+I added the ability to select class / module / function docstrings, even if
+they are commented. Other plugins like [vim-commentary](https://github.com/tpope/vim-commentary)
+make it possible to quickly add or remove comments from docstrings simply by
+typing "vad" to visually select the docstring and "gc" to comment/uncomment it.
+
 ### Python Text Objects
 
 -   "`ac`"    : Outer class text object. This includes the entire class, including the header (class name declaration) and decorators, the class body, as well as a blank line if this is given after the class definition.
