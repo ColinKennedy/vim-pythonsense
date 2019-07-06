@@ -432,6 +432,14 @@ function! pythonsense#python_docstring_text_object (inner)
             else
                 let close_pattern = '#*\s*"""\s*$'
             endif
+
+            " Check if the docstring is a single-lined docstring
+            let e = s
+            if e <= line('$') && getline(e) !~# '^\s*\(def\|class\)' && getline(e) =~ close_pattern
+                exe 'norm ' . s . 'ggV'
+                return
+            endif
+
             " set search end to just after found start line
             let e = s + 1
             " descend lines obj_end_line end of buffer or def/class line
